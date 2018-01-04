@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class QuoteController {
 
     private static final String template = "Hello, %s!";
-  
+
     @RequestMapping("/quote")
-    public Quote greeting(@RequestParam(value="s", defaultValue="SPX") String symbol) {
+    public Quote greeting(@RequestParam(value="s", defaultValue=".INX") String symbol) {
         return new Quote(symbol);
     }
 }

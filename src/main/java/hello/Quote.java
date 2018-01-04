@@ -8,14 +8,10 @@ public class Quote {
 
     public Quote(String symbol) {
         this.symbol = symbol;
-        this.ticker = Util.getUnderLyingPrice();
+        this.ticker = Util.getUnderLyingPrice(symbol);
     }
 
-    public String getSymbol() {
-        return symbol;
-    }
+    public String getSymbol() { return symbol; }
 
-    public double getTicker() {
-        return ticker;
-    }
+    public double getTicker() { return ticker; }
 }

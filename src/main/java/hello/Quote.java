@@ -4,7 +4,7 @@ public class Quote {
 
     private final String symbol;
 
-    private double ticker;
+    private double  ticker;
 
     public Quote(String symbol) {
         this.symbol = symbol;

@@ -39,8 +39,12 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
         
-      # build and deploy
+      # build code
       - run: mvn integration-test
+
+      # build docker image and deploy to Quay repository
+      - setup_remote_docker:   # (2)
+            docker_layer_caching: true # (3)
 
       - run: docker build -t trade-api .
 

@@ -50,6 +50,8 @@ jobs:
 
       - run: docker tag trade-api quay.io/rezaloo/rtype
 
+      - run: docker login https://quay.io/repository/ -u rezaloo -p coreos1234
+
       - run: docker push quay.io/rezaloo/rtype
 
 

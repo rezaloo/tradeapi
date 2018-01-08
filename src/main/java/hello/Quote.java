@@ -11,6 +11,7 @@ public class Quote {
         this.ticker = Util.getUnderLyingPrice(symbol);
     }
 
+    // Not used
     public String getSymbol() { return symbol; }
 
     public double getTicker() { return ticker; }

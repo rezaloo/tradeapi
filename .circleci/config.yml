@@ -6,15 +6,12 @@ version: 2
 jobs:
   build:
     docker:
-
-      working_directory: ~/repo
-
-      # specify the version you desire here
       - image: rezaloo/jdk8k8s
         auth:
           username: rezaloo  # can specify string literal values
           password: $DOCKERHUB_PASSWORD  # or project environment variable reference
 
+    working_directory: ~/repo
 
     environment:
       # Customize the JVM maximum heap limit
@@ -37,7 +34,7 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-        
+
       # build code
       - run: mvn integration-test
 

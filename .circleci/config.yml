@@ -11,7 +11,7 @@ jobs:
           username: rezaloo  # can specify string literal values
           password: $DOCKERHUB_PASSWORD  # or project environment variable reference
 
-    working_directory: ~/repo 
+    working_directory: ~/repo
 
     environment:
       # Customize the JVM maximum heap limit
@@ -19,7 +19,7 @@ jobs:
 
     # machine: true
     steps:
-      - checkout
+      - checkout 
 
       # Download and cache dependencies
       - restore_cache:

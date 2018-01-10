@@ -16,7 +16,7 @@ jobs:
     environment:
       # Customize the JVM maximum heap limit
       MAVEN_OPTS: -Xmx3200m
-      IMAGE_NAME: trade-api-${CIRCLE_BUILD_NUM}
+      IMAGE_NAME: trade-ap${CIRCLE_BUILD_NUM}
 
     # machine: true
     steps:
@@ -45,13 +45,13 @@ jobs:
 
       - run: docker build -t trade-api .
 
-      - run: docker tag trade-api quay.io/rezaloo/rtype/${IMAGE_NAME}
+      - run: docker tag trade-api quay.io/rezaloo/rtype/trade-api-${CIRCLE_BUILD_NUM}
 
       - run: docker login https://quay.io/repository/ -u rezaloo -p ${QUAY_PASSWORD}
 
-      - run: docker push quay.io/rezaloo/rtype/${IMAGE_NAME}
+      - run: docker push quay.io/rezaloo/rtype/trade-api-${CIRCLE_BUILD_NUM}
 
-      - run: kubectl set image deployment trade-api trade-api=quay.io/rezaloo/rtype/${IMAGE_NAME} --namespace team-product
+      - run: kubectl set image deployment trade-api quay.io/rezaloo/rtype/trade-api-${CIRCLE_BUILD_NUM} --namespace team-product
 
 
 

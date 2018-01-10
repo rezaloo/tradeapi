@@ -45,13 +45,13 @@ jobs:
 
       - run: docker build -t trade-api:${CIRCLE_BUILD_NUM} .
 
-      - run: docker tag trade-api:${CIRCLE_BUILD_NUM} quay.io/rezaloo/rtype
+      - run: docker tag trade-api:${CIRCLE_BUILD_NUM} quay.io/rezaloo/rtype:${CIRCLE_BUILD_NUM}
 
       - run: docker login https://quay.io/repository/ -u rezaloo -p ${QUAY_PASSWORD}
 
-      - run: docker push quay.io/rezaloo/rtype
+      - run: docker push quay.io/rezaloo/rtype:${CIRCLE_BUILD_NUM}
 
-      - run: kubectl set image deployment trade-api quay.io/rezaloo/rtype/trade-api:${CIRCLE_BUILD_NUM} --namespace team-product
+      - run: kubectl set image deployment trade-api trade-api=quay.io/rezaloo/rtype:${CIRCLE_BUILD_NUM} --namespace team-product
 
 
 

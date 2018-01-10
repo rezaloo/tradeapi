@@ -43,15 +43,15 @@ jobs:
       - setup_remote_docker:   # (2)
             docker_layer_caching: true # (3)
 
-      - run: docker build -t trade-api .
+      - run: docker build -t trade-api:${CIRCLE_BUILD_NUM} .
 
-      - run: docker tag trade-api quay.io/rezaloo/rtype/trade-api-${CIRCLE_BUILD_NUM}
+      - run: docker tag trade-api:${CIRCLE_BUILD_NUM} quay.io/rezaloo/rtype
 
       - run: docker login https://quay.io/repository/ -u rezaloo -p ${QUAY_PASSWORD}
 
-      - run: docker push quay.io/rezaloo/rtype/trade-api-${CIRCLE_BUILD_NUM}
+      - run: docker push quay.io/rezaloo/rtype
 
-      - run: kubectl set image deployment trade-api quay.io/rezaloo/rtype/trade-api-${CIRCLE_BUILD_NUM} --namespace team-product
+      - run: kubectl set image deployment trade-api quay.io/rezaloo/rtype/trade-api:${CIRCLE_BUILD_NUM} --namespace team-product
 
 
 

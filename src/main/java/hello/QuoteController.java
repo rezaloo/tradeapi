@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class QuoteController {
 
+    // New comment
     private static final String template = "Hello, %s!";
 
     @RequestMapping("/quote")

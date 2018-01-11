@@ -3,8 +3,7 @@ package hello;
 public class Quote {
 
     private final String symbol;
-
-    // Comment 
+    
     private double  ticker;
 
     public Quote(String symbol) {
